@@ -1,5 +1,8 @@
 <h2>All Heroines</h2>
-
+<%= form_tag("/heroines/search#{@power}", method: "get") do %>
+  <%= text_field_tag(@power) %>
+  <%= submit_tag%>
+<% end %>
 <ul>
   <% @heroines.each do |heroine| %>
     <li>
