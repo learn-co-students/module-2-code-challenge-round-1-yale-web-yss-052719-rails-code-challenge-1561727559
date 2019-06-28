@@ -3,7 +3,7 @@
     <div><%= f.text_field :name %></div>
     Super Name
     <div><%= f.text_field :super_name %></div>
-    <div><%= f.collection_select :power_id, @powers, :id, :name %></div>
+    <div><%= f.collection_select :power_id, @powers, :id, :name,  {:prompt => true} %></div>
     <div><%= f.submit %></div>
 <% end %>
 </ul>

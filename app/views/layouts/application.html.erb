@@ -10,5 +10,12 @@
 
   <body>
     <%= yield %>
+    <nav>
+    <h3>Navigation Bar</h3>
+    <ul>
+    <div>Heroines' Index: <%= link_to "Take Me There", heroines_path %></div>
+    <div>Powers' Index: <%= link_to "Take Me There", powers_path %></div>
+    </ul>
+    </nav>
   </body>
 </html>

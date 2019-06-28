@@ -3,3 +3,11 @@
 <h3>Name: <%= @heroine.name %></h3>
 <h3>Superpower: <%= link_to @heroine.power.name, power_path(@heroine.power) %></h3>
 </ul>
+
+<nav>
+Need to Make Changes to Your Profile? <div><%= link_to "Click Here", edit_heroine_path(@heroine) %></div>
+Delete Your Profile To Hide From Your Foes?
+<%= form_tag heroine_path(@heroine), method: "delete" do %>
+  <%= submit_tag "Delete #{@heroine.super_name}" %>
+<% end %>
+</nav>
