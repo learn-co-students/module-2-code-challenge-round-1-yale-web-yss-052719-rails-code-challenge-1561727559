@@ -1,0 +1,18 @@
+<h1>Create Power:</h1>
+
+<% if flash[:error] %>
+    <% flash[:error].each do |err| %>
+        <li><%= err %></li><br>
+    <% end %>
+    <% flash[:error] = nil %>
+<% end %>
+
+<%= form_for @power do |f| %>
+    <%= f.label :name %><br>
+    <%= f.text_field :name %><br>
+    <%= f.label :description %><br>
+    <%= f.text_area :description %><br>
+   
+    <%= f.submit %>
+<% end %>
+    
