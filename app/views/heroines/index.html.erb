@@ -1,9 +1,19 @@
+<% if flash[:alert] %>
+<li><%= flash[:alert] %></li>
+<% end %>
+
 <h2>All Heroines</h2>
+
+<b>Search By Superpower:</b><br>
+<%= form_tag(heroines_path, method: "get") do %>
+<%= text_field_tag(:q) %>
+<%= submit_tag("Search") %>
+<% end %>
 
 <ul>
   <% @heroines.each do |heroine| %>
     <li>
-      <%= heroine.super_name %>
+      <%= link_to "#{heroine.super_name}", heroine_path(heroine) %>
     </li>
     <br>
   <% end %>
