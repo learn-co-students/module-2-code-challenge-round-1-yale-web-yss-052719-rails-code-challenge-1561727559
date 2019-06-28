@@ -4,6 +4,8 @@ class CreateHeroines < ActiveRecord::Migration[5.0]
       t.string :name
       t.string :super_name
 
+      t.integer :power_id
+
       t.timestamps
     end
   end
