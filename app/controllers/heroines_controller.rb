@@ -1,6 +1,15 @@
 class HeroinesController < ApplicationController
   def index
-    @heroines = Heroine.all
+    if params[:search]
+      power = Power.find_by(name: params[:search])
+      if power
+        @heroines = Heroine.where(power_id: power.id)
+      else
+        @heroines = []
+      end
+    else
+      @heroines = Heroine.all
+    end
   end
 
   def show
@@ -17,7 +26,7 @@ class HeroinesController < ApplicationController
     if @heroine.save
       redirect_to heroine_path(@heroine)
     else
-      flash[:error] = @heroine.errors.full_messages
+      flash.now[:error] = @heroine.errors.full_messages
       @powers = Power.all
       render :new
     end

@@ -9,6 +9,12 @@
   </head>
 
   <body>
+    <div class="nav">
+      <%= link_to 'All Powers', powers_path %>
+      <%= link_to 'All Heroines', heroines_path %>
+      <%= link_to 'Create Heroine', new_heroine_path %>
+    </div>
+
     <%= yield %>
   </body>
 </html>
