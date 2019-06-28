@@ -3,7 +3,7 @@ class HeroinesController < ApplicationController
     
     @heroines = Heroine.search(params[:search])
     
-
+    render :index
     # @heroines = if params[:term]
     #   Heroine.where("#{@heroines.power.name} LIKE ?", "#{params[:term]}")
     # else

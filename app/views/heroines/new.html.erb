@@ -7,13 +7,13 @@
 <% end%>
 
 
-<h1> New Heroine</h1>
+<h1> Create Heroine</h1>
 
 <%= form_for @heroine do |f|%>
-<%= f.label :name %>:
+<b> <%= f.label :name %> </b> <br>
 <%= f.text_field :name %> <br>
-<%= f.label :super_name %>:
+<b> <%= f.label :super_name %> </b> <br>
 <%= f.text_field :super_name %> <br>
 <%= f.collection_select  :power_id, @powers, :id, :name%>
-<%= f.submit %>
+<%= f.submit value= "Create Heroine"%>
 <% end%>
