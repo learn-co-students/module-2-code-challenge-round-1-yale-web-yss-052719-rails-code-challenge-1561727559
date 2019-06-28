@@ -1,6 +1,18 @@
 class HeroinesController < ApplicationController
   def index
-    @heroines = Heroine.all
+    if params[:q]
+      # byebug
+      if Power.find_by(name: params[:q].downcase) == nil
+        flash[:alert] = "superpower not found"
+        redirect_to '/heroines'
+        # byebug
+      else
+        @power = Power.find_by(name: params[:q].downcase)
+        @heroines = Heroine.where(power_id: @power.id)
+      end
+    else
+      @heroines = Heroine.all
+    end
   end
 
   def show
@@ -13,6 +25,7 @@ class HeroinesController < ApplicationController
   end
 
   def create
+    # byebug
     @heroine = Heroine.new(heroine_params)
     if @heroine.save
       redirect_to heroine_path(@heroine)
@@ -25,6 +38,6 @@ class HeroinesController < ApplicationController
 
   private
   def heroine_params
-    params.require(:heroine).permit(:name, :super_name, :power_id)
+    params.require(:heroine).permit(:name, :super_name, :power_id, :q)
   end
 end
