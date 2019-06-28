@@ -9,15 +9,11 @@
     <%= submit_tag "Search" %>
 <% end %>
 
-<% if @heroines == [] %>
-  <p>Not a valid Superpower!</p>
-<% else %>
-  <ul>
-    <% @heroines.each do |heroine| %>
-      <li>
-        <%= link_to "#{heroine.super_name}", heroine_path(heroine) %>
-      </li>
-      <br>
-    <% end %>
-  </ul>
-<% end %>
+<ul>
+  <% @heroines.each do |heroine| %>
+    <li>
+      <%= link_to "#{heroine.super_name}", heroine_path(heroine) %>
+    </li>
+    <br>
+  <% end %>
+</ul>
