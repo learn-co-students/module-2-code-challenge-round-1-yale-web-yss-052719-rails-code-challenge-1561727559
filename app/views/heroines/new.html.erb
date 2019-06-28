@@ -4,16 +4,13 @@
   <% end %>
 <% end %>
 
-
-
-
 <h1>Create Heroine: </h1>
 
 <%= form_for @heroine do |f| %>
-<%= f.label :name %>
+<%= f.label :name %><br>
 <%= f.text_field :name %><br>
-<%= f.label :super_name %>
+<%= f.label :super_name %><br>
 <%= f.text_field :super_name %><br>
-<%= f.collection_select :power_id, @powers, :id, :name %><br>
-<%= f.submit %>
+<br><%= f.collection_select :power_id, @powers, :id, :name %><br>
+<br><%= f.submit %><br>
 <% end %>
