@@ -1,6 +1,11 @@
 class HeroinesController < ApplicationController
   def index
-    @heroines = Heroine.all
+    if params[:q]
+      power = Power.find_by(name: params[:q])
+      power ? @heroines = Heroine.where(power_id: power.id) : @heroines = []
+    else
+      @heroines = Heroine.all
+    end
   end
 
   def show
@@ -22,8 +27,6 @@ class HeroinesController < ApplicationController
       render :new
 
     end
-
-    
   end
 
   private
