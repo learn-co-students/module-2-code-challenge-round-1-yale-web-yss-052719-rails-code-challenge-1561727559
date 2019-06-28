@@ -1,6 +1,14 @@
+<% if flash[:errors] != nil %>
+<% flash[:errors].each do |x| %>
+    <%= x %>
+    <%end%>
+    <%end%>
+    
+    
+
 <%=form_for(@heroine) do |x| %>
     Name :<%= x.text_field :name %>
-   Super Name: <%= x.text_field :super_name %>
+    Super Name: <%= x.text_field :super_name %>
     <%= x.collection_select :power_id, @powers, :id, :name%>
     <%= x.submit %>
     <%end%>
