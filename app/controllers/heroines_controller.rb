@@ -1,7 +1,15 @@
 class HeroinesController < ApplicationController
   def index
-    @heroines = Heroine.all
-    render :index
+    
+    @heroines = Heroine.search(params[:search])
+    
+
+    # @heroines = if params[:term]
+    #   Heroine.where("#{@heroines.power.name} LIKE ?", "#{params[:term]}")
+    # else
+    #   @heroines = Heroine.all
+    #   render :index
+    # end
   end
 
   def show
@@ -29,7 +37,7 @@ class HeroinesController < ApplicationController
 
   private
   def heroine_params
-    params.require(:heroine).permit(:name, :super_name, :power_id)
+    params.require(:heroine).permit(:name, :super_name, :power_id, :term)
   end
 
 end
