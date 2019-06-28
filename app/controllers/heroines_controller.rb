@@ -1,7 +1,12 @@
 class HeroinesController < ApplicationController
   def index
-    
-    @heroines = Heroine.all
+    @heroines = if params[:term]
+      Heroine.all.select do |heroine|
+        heroine.power.name == params[:term]
+      end
+    else
+      Heroine.all
+    end
   end
 
   def new
@@ -11,11 +16,12 @@ class HeroinesController < ApplicationController
 
   def create
     @heroine = Heroine.create(heroine_params)
+    @powers = Power.all
   
     if @heroine.valid?
       redirect_to heroine_path(@heroine)
     else
-      flash[:error] = @heroine.errros.full_messages
+      flash.now[:error] = @heroine.errors.full_messages
       render :new
     end
   end
@@ -27,7 +33,7 @@ class HeroinesController < ApplicationController
   private
 
   def heroine_params
-    params.require(:heroine).permit(:name, :super_name, :power_id)
+    params.require(:heroine).permit(:name, :super_name, :power_id, :term)
   end
 
 end

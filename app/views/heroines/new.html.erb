@@ -1,12 +1,11 @@
-<% if flash[:error] %>
-<% flash[:error].each do |error| %>
-    <%= error %>
-<% end %>
-<% end %>
-
 <h1>Create Heroine</h1>
+<% if flash.now[:error] %>
+    <% flash.now[:error].each do |error| %>
+        <%= error %>
+    <% end %>
+<% end %>
 <br>
-<br>
+
 <%= form_for @heroine do |f| %>
     <%= f.label :name %><br>
     <%= f.text_field :name %><br>
