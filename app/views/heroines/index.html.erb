@@ -3,8 +3,12 @@
 <ul>
   <% @heroines.each do |heroine| %>
     <li>
-      <%= heroine.super_name %>
+      <%= link_to heroine.super_name, heroine_path(heroine) %>
     </li>
     <br>
   <% end %>
+
+  <%= form_tag('/heroines', method: :get)%>
+  <%= collection_select :heroines, :ids, Power.all, :id, :name %>
+  <%= submit_tag 'Find'%>
 </ul>
